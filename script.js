@@ -31,15 +31,15 @@ function computerChoice() {
   
   function playRound(player, computer) 
   {
-    return player === computer? "IT'S TIE"
+    return player === computer? "IT'S TIE 😵"
 
     : player === "ROCK" && computer === "PAPER" ||
       player === "PAPER" && computer === "SCISSORS" ||
       player === "SCISSORS" && computer === "ROCK"
       ? 
-      `The computer is the winner by picking a ${computer}.`
+      `The computer is the winner  by picking a ${computer} .`
       
-      : `You are the Winner by picking ${player} and the Computer Picked ${computer}.`;
+      : `You are the Winner 🏆 by picking ${player} and the Computer Picked ${computer}.`;
   }
 
   const displayResults = (player, computer, result) => {
@@ -50,7 +50,7 @@ function computerChoice() {
     // Remove existing CSS classes
     result_div.classList.remove('win', 'lose', 'tie');
   
-    if (result === "IT'S TIE") {
+    if (result === "IT'S TIE 😵") {
       result_div.classList.add('tie');
     } else if (result.startsWith('The computer is the winner')) {
       result_div.classList.add('lose');
