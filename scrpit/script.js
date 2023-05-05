@@ -1,3 +1,22 @@
+let player;
+let computer;
+
+let yourPick = document.getElementById('status');
+let compPick = document.getElementById('computer');
+let result_div = document.getElementById('result');
+
+let five = document.getElementById('five-round');
+
+
+const btn = document.querySelectorAll('.btn');
+btn.forEach(button => button.addEventListener('click',() =>{
+  player = button.classList[4].toUpperCase();
+  computer = computerChoice()
+  let result = playRound(player, computer)
+  displayResults(player, computer,result)
+})); 
+
+
 function computerChoice() {
     let random = Math.floor(Math.random() * 3);
     switch (random) {
@@ -10,29 +29,32 @@ function computerChoice() {
     }
   }
   
-  function playRound(choice, computerPlay) 
+  function playRound(player, computer) 
   {
-    console.log("Enter your choice for the game (rock, paper, scissors): ");
-    // Handle the draw case
-    if (choice === computerPlay)
-    {
-      return "DRAW";
-    }
-    // Handle the case when the computer wins
-    else if (
-      (choice === "ROCK" && computerPlay === "PAPER") ||
-      (choice === "PAPER" && computerPlay === "SCISSORS") ||
-      (choice === "SCISSORS" && computerPlay === "ROCK")
-            ) 
-    {
-      return `The computer is the winner by picking a ${computerPlay}.`;
-    }
-    // Handle the case when the player wins
-    else  
-    {
-      return `You are the winner by picking ${choice} and the computer picked ${computerPlay}.`;
-    }
+    return player === computer? "IT'S TIE"
+
+    : player === "ROCK" && computer === "PAPER" ||
+      player === "PAPER" && computer === "SCISSORS" ||
+      player === "SCISSORS" && computer === "ROCK"
+      ? 
+      `The computer is the winner by picking a ${computer}.`
+      
+      : `You are the Winner by picking ${player} and the Computer Picked ${computer}.`;
   }
+
+  const displayResults = (player, computer, result) => {
+    yourPick.textContent = `You Picked ${player}.`
+    compPick.textContent = `Computer Picked ${computer}.`
+    result_div.textContent = result;
   
-  let computerPlay = computerChoice();
-  let playerTurn = playRound("PAPER", computerPlay);
+    // Remove existing CSS classes
+    result_div.classList.remove('win', 'lose', 'tie');
+  
+    if (result === "IT'S TIE") {
+      result_div.classList.add('tie');
+    } else if (result.startsWith('The computer is the winner')) {
+      result_div.classList.add('lose');
+    } else {
+      result_div.classList.add('win');
+    }
+  }  
