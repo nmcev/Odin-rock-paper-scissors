@@ -1,69 +1,145 @@
-body{
-    background-image: url(img/background.avif);
-    font-family: 'Sigmar', cursive;
-}
-.container{
-    display: flex;
-    margin-top: 5rem;
-    justify-content: center;
-    gap: 10rem;   
-}
-.buttons{
-    display: flex;
-    justify-content: center;
-    align-items: center;  
-    padding: 4rem;
-    gap: 40px;
-    margin-top: 5rem;
-    background-color: #eee;
-  
-}
-.buttons{
-    background-color: #ccc;
-    transition: background-color 0.3s ease;
-  }
-  
-  .buttons:hover {
-    background-color: #ffdcdc;
-  }
-.buttons > button{
-    width: 200px;
-    height: 60px;
-   font-weight: 600;
-   border-radius: 50px ;
-   border-color: #eee;
-   cursor: pointer;
-   transition: background-color 0.4s ease;
-}
-.buttons > button:hover{
-    background-color: #f99;
-}
-.result{
-    display: flex;
-     align-items: center;
-     justify-content: center;
-     gap: 5rem;
-     color: white;
-     font-size: 25px;
-     flex-direction: column;
+/* default styles for all devices */
+
+body {
+  background-image: url(img/background.avif);
+  font-family: 'Sigmar', cursive;
+  margin: 0;
+  padding: 0;
 }
 
-.status ,.computer,.result{
-    font-family: 'Sigmar', cursive;
+.container {
+  display: flex;
+  margin-top: 5rem;
+  justify-content: center;
+  align-items: center;  
+  flex-direction: column;
+  color: #eee;
+  font-family: 'Sigmar', cursive;
 }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  padding: 3.5rem;
+  gap: 75px;
+  margin-top: 5rem;
+}
+
+.buttons {
+  background-color: #4e4d4d;
+  transition: background-color 0.3s ease;
+  border-radius: 30px;
+  width: 50vw;
+  margin-left: 30rem;
+}
+
+.buttons:hover {
+  background-color: #272727;
+}
+
+.buttons > img {
+  width: 220px;
+  height: auto;
+  font-weight: 600;
+  border-radius: 50px ;
+  border-color: #eee;
+  cursor: pointer;
+  padding: 19px;
+  transition: background-color 0.3s ease;
+  transition: transform 0.5s;
+}
+
+.buttons > img:hover {
+  box-shadow:  5px 5px 26px #eeeeee6d;
+  background-color:#272727;
+  transform: scale(1.16);
+  
+}
+
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  color: white;
+  font-size: 25px;
+  flex-direction: column;
+}
+
+.status, .computer, .result {
+  font-family: 'Sigmar', cursive;
+}
+
 /* styles for win class */
 .win {
-    background-color: green;
-    color: white;
-  }
-  
-  /* styles for lose class */
-  .lose {
-    background-color: red;
-    color: white;
+  background-color: green;
+  color: white;
+}
+
+/* styles for lose class */
+.lose {
+  background-color: red;
+  color: white;
+}
+
+.tie {
+  background-color: rgb(228, 221, 0);
+  color: white;
+}
+
+/* media queries for different screen sizes */
+
+/* for screens smaller than 576px (extra small devices) */
+@media (max-width: 575.98px) {
+  .container {
+    margin-top: 3rem;
   }
 
-  .tie{
-    background-color: rgb(228, 221, 0);
-    color: white;
+  .buttons {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
   }
+
+  .buttons > img {
+    width: 150px;
+    padding: 10px;
+  }
+
+  .result {
+    font-size: 18px;
+    gap: 2rem;
+  }
+}
+
+/* for screens between 576px and 767.98px (small devices) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .container {
+    margin-top: 3rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttons > img {
+    width: 150px;
+    padding: 10px;
+  }
+
+  .result {
+    font-size: 20px;
+    gap: 2rem;
+  }
+}
+
