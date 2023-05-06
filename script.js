@@ -10,7 +10,7 @@ let five = document.getElementById('five-round');
 
 const btn = document.querySelectorAll('.btn');
 btn.forEach(button => button.addEventListener('click',() =>{
-  player = button.classList[4].toUpperCase();
+  player = button.classList[2].toUpperCase();
   computer = computerChoice()
   let result = playRound(player, computer)
   displayResults(player, computer,result)
