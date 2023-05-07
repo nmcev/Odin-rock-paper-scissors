@@ -145,4 +145,17 @@ body {
     gap: 2rem;
   }
 }
-
+  .counter{
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  font-size: 26px;
+  padding-top:50px;
+  gap: 50px;
+}
+.counter > :nth-child(1){
+color: rgb(98, 233, 57);
+}
+.counter > :nth-child(2){
+color: rgb(233, 57, 57);
+}
