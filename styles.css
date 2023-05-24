@@ -185,58 +185,59 @@ body {
   display: none;
 }
 
-#play-again-button {
+#play-again-button{
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 2rem;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
-  --enhanced-glow-color: rgb(231, 206, 255);
-  --btn-color: rgb(100, 61, 136);
-  border: .25em solid var(--glow-color);
-  padding: 1em 3em;
-  color: var(--glow-color);
-  font-size: 15px;
-  font-weight: bold;
-  background-color: var(--btn-color);
-  border-radius: 1em;
-  outline: none;
-  box-shadow: 0 0 1em .25em var(--glow-color),
-    0 0 4em 1em var(--glow-spread-color),
-    inset 0 0 .75em .25em var(--glow-color);
-  text-shadow: 0 0 .5em var(--glow-color);
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+  color: white;
+  text-shadow: 2px 2px rgb(116, 116, 116);
+  text-transform: uppercase;
+  border: solid 2px black;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 17px;
+  background-color: hsl(49deg 98% 60%);
+  border-radius: 50px;
   position: relative;
-  transition: all 0.3s;
-}
-
-#play-again-button::after {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  top: 120%;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: var(--glow-spread-color);
-  filter: blur(2em);
-  opacity: .7;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
-}
-
-#play-again-button:hover {
-  color: var(--btn-color);
-  background-color: var(--glow-color);
-  box-shadow: 0 0 1em .25em var(--glow-color),
-    0 0 4em 2em var(--glow-spread-color),
-    inset 0 0 .75em .25em var(--glow-color);
+  overflow: hidden;
+  transition: all .5s ease;
 }
 
 #play-again-button:active {
-  box-shadow: 0 0 0.6em .25em var(--glow-color),
-    0 0 2.5em 2em var(--glow-spread-color),
-    inset 0 0 .5em .25em var(--glow-color);
+  transform: scale(.9);
+  transition: all 100ms ease;
+}
+
+button svg {
+  transition: all .5s ease;
+  z-index: 2;
+}
+
+.play {
+  transition: all .5s ease;
+  transition-delay: 300ms;
+}
+
+#play-again-button:hover svg {
+  transform: scale(3) translate(50%);
+}
+
+.now {
+  position: absolute;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all .5s ease;
+  z-index: 2;
+}
+
+#play-again-button:hover .now {
+  transform: translateX(10px);
+  transition-delay: 300ms;
+}
+
+#play-again-button:hover .play {
+  transform: translateX(200%);
+  transition-delay: 300ms;
 }
