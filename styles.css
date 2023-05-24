@@ -1,22 +1,31 @@
 /* default styles for all devices */
 
+@font-face {
+  font-family: lexend;
+  src: url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
+}
+
 body {
   background-image: url(img/background.avif);
+  font-family: 'Lexend', sans-serif;
   font-family: 'Sigmar', cursive;
+
   margin: 0;
   padding: 0;
+
 }
 
 .container {
   display: flex;
   margin-top: 5rem;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   flex-direction: column;
   color: #eee;
-  font-family: 'Sigmar', cursive;
+  font-family: 'Sigmar', sans-serif2, cursive;
 }
-.container > h1 {
+
+.container>h1 {
   background-color: #000;
   color: #f0db4f;
   text-align: center;
@@ -25,14 +34,15 @@ body {
 .buttons {
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   padding: 3.5rem;
   gap: 75px;
   margin-top: 5rem;
 }
 
 .buttons {
-  background-color: #000;;
+  background-color: #000;
+  ;
   transition: background-color 0.3s ease;
   border-radius: 30px;
   width: 50vw;
@@ -41,11 +51,11 @@ body {
 
 
 
-.buttons > img {
+.buttons>img {
   width: 220px;
   height: auto;
   font-weight: 600;
-  border-radius: 10px ;
+  border-radius: 10px;
   border-color: #eee;
   cursor: pointer;
   padding: 19px;
@@ -53,11 +63,11 @@ body {
   transition: transform 0.5s;
 }
 
-.buttons > img:hover {
-  box-shadow:  5px 5px 26px #eeeeee80;
-  background-color:#323330;
+.buttons>img:hover {
+  box-shadow: 5px 5px 26px #eeeeee80;
+  background-color: #323330;
   transform: scale(1.16);
-  
+
 }
 
 
@@ -71,7 +81,9 @@ body {
   flex-direction: column;
 }
 
-.status, .computer, .result {
+.status,
+.computer,
+.result {
   font-family: 'Sigmar', cursive;
 }
 
@@ -109,7 +121,7 @@ body {
     margin-right: auto;
   }
 
-  .buttons > img {
+  .buttons>img {
     width: 150px;
     padding: 10px;
   }
@@ -135,7 +147,7 @@ body {
     margin-right: auto;
   }
 
-  .buttons > img {
+  .buttons>img {
     width: 150px;
     padding: 10px;
   }
@@ -145,17 +157,86 @@ body {
     gap: 2rem;
   }
 }
-  .counter{
+
+.counter {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-self: center;
   font-size: 26px;
-  padding-top:50px;
+  padding-top: 50px;
   gap: 50px;
 }
-.counter > :nth-child(1){
-color: rgb(98, 233, 57);
+
+.counter>.cont>:nth-child(1) {
+  color: rgb(98, 233, 57);
 }
-.counter > :nth-child(2){
-color: rgb(233, 57, 57);
+
+.counter>.cont> :nth-child(2) {
+  color: rgb(233, 57, 57);
+}
+
+.cont {
+  display: flex;
+  gap: 5rem;
+}
+
+.buttons .btn.hidden {
+  display: none;
+}
+
+#play-again-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  --glow-color: rgb(217, 176, 255);
+  --glow-spread-color: rgba(191, 123, 255, 0.781);
+  --enhanced-glow-color: rgb(231, 206, 255);
+  --btn-color: rgb(100, 61, 136);
+  border: .25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+    0 0 4em 1em var(--glow-spread-color),
+    inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+}
+
+#play-again-button::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: .7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+#play-again-button:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+    0 0 4em 2em var(--glow-spread-color),
+    inset 0 0 .75em .25em var(--glow-color);
+}
+
+#play-again-button:active {
+  box-shadow: 0 0 0.6em .25em var(--glow-color),
+    0 0 2.5em 2em var(--glow-spread-color),
+    inset 0 0 .5em .25em var(--glow-color);
 }
