@@ -6,6 +6,8 @@ let computerScore = 0;
 
 let playerResult_div = document.getElementById('player_resultD');
 let compResult_div = document.getElementById('comp_resultD');
+const gameOverScreen = document.getElementById('game-over-screen');
+const playAgainButton = document.getElementById('play-again-button');
 
 
 let result_div = document.getElementById('result');
@@ -77,12 +79,12 @@ const updateScoreboard = () => {
 
 const calcWinner = () => {
   if (playerScore == 5) {
-    result_div.textContent = "Congratulations! You have won the game";
+    result_div.textContent = "Congratulations🎉! You have won the game";
     disableButtons();
     gameOverScreen.style.display = 'block';
 
   } else if (computerScore == 5) {
-    result_div.textContent = "Game over! The computer has won";
+    result_div.textContent = "Game over🚨! The computer has won";
     disableButtons();
     gameOverScreen.style.display = 'block';
   }
@@ -91,4 +93,19 @@ const calcWinner = () => {
 const disableButtons = () => {
   btn.forEach(button => button.disabled = true);
   btn.forEach(button => button.classList.add("hidden"));
+}
+
+playAgainButton.addEventListener("click", () => {
+ resetGame();
+})
+
+const resetGame = () => {
+  playerScore = 0;
+  computerScore = 0;
+  result_div.textContent = "";
+  playerResult_div.textContent = '';
+  compResult_div.textContent = '';
+  gameOverScreen.style.display = "none";
+  btn.forEach(button => button.disabled = false);
+  btn.forEach(button => button.classList.remove("hidden"));
 }
