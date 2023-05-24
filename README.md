@@ -7,7 +7,7 @@
 <p align = "center"> Rock-Paper-Scissors Game </p>
 
  ## Technology used 
- [![My Skills](https://skills.thijs.gg/icons?i=js,html,css,bootstrap)](https://skills.thijs.gg)
+ [![My Skills](https://skills.thijs.gg/icons?i=js,html,css)](https://skills.thijs.gg)
 
 ###  - Update 
 This Procject include to the list of Odin's Projects <br>
