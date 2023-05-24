@@ -4,21 +4,25 @@ let computer;
 let playerScore = 0;
 let computerScore = 0;
 
-let playerRsult_div = document.getElementById('player_resultD');
+let playerResult_div = document.getElementById('player_resultD');
 let compResult_div = document.getElementById('comp_resultD');
 
-let yourPick = document.getElementById('status');
-let compPick = document.getElementById('computer');
+
 let result_div = document.getElementById('result');
 
 const btn = document.querySelectorAll('.btn');
 btn.forEach(button => button.addEventListener('click', () => {
-  player = button.classList[2].toUpperCase();
-  computer = computerChoice()
 
-  let result = playRound(player, computer)
-  displayResults(player, computer, result)
+  if (playerScore == 5 || computerScore == 5) {
+    return;
+  }
+  player = button.dataset.pickValue;
+  computer = computerChoice();
+
+  let result = playRound(player, computer);
+  displayResults(player, computer, result);
   updateScoreboard();
+  calcWinner();
 }));
 
 function computerChoice() {
@@ -36,13 +40,13 @@ function computerChoice() {
 function playRound(player, computer) {
   let result;
   if (player === computer) {
-    result = "IT'S TIE 😵";
+    result = `IT'S TIE 😵 ,You picked ${player} and computer picked ${computer}`;
   } else if (
     (player === "ROCK" && computer === "PAPER") ||
     (player === "PAPER" && computer === "SCISSORS") ||
     (player === "SCISSORS" && computer === "ROCK")
   ) {
-    result = `The computer is the winner  by picking a ${computer} .`;
+    result = `The computer is the winner by picking ${computer}.`;
     computerScore++;
   } else {
     result = `You are the Winner 🏆 by picking ${player} and the Computer Picked ${computer}.`;
@@ -52,14 +56,12 @@ function playRound(player, computer) {
 }
 
 const displayResults = (player, computer, result) => {
-  yourPick.textContent = `You Picked ${player}.`
-  compPick.textContent = `Computer Picked ${computer}.`
   result_div.textContent = result;
 
   // Remove existing CSS classes
   result_div.classList.remove('win', 'lose', 'tie');
 
-  if (result === "IT'S TIE 😵") {
+  if (result === `IT'S TIE 😵 ,You picked ${player} and computer picked ${computer}`) {
     result_div.classList.add('tie');
   } else if (result.startsWith('The computer is the winner')) {
     result_div.classList.add('lose');
@@ -69,6 +71,24 @@ const displayResults = (player, computer, result) => {
 }
 
 const updateScoreboard = () => {
-  playerRsult_div.textContent = `Player: ${playerScore}`;
+  playerResult_div.textContent = `Player: ${playerScore}`;
   compResult_div.textContent = `Computer: ${computerScore}`;
+}
+
+const calcWinner = () => {
+  if (playerScore == 5) {
+    result_div.textContent = "Congratulations! You have won the game";
+    disableButtons();
+    gameOverScreen.style.display = 'block';
+
+  } else if (computerScore == 5) {
+    result_div.textContent = "Game over! The computer has won";
+    disableButtons();
+    gameOverScreen.style.display = 'block';
+  }
+}
+
+const disableButtons = () => {
+  btn.forEach(button => button.disabled = true);
+  btn.forEach(button => button.classList.add("hidden"));
 }
