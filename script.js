@@ -81,11 +81,13 @@ const calcWinner = () => {
   if (playerScore == 5) {
     result_div.textContent = "Congratulations🎉! You have won the game";
     disableButtons();
+    playSound("audio/winning.mp3");
     gameOverScreen.style.display = 'block';
 
   } else if (computerScore == 5) {
     result_div.textContent = "Game over🚨! The computer has won";
     disableButtons();
+    playSound("audio/losing.mp3", 2, 2)
     gameOverScreen.style.display = 'block';
   }
 }
@@ -96,7 +98,8 @@ const disableButtons = () => {
 }
 
 playAgainButton.addEventListener("click", () => {
- resetGame();
+  resetGame();
+  playSound("audio/duck.mp3")
 })
 
 const resetGame = () => {
@@ -109,3 +112,8 @@ const resetGame = () => {
   btn.forEach(button => button.disabled = false);
   btn.forEach(button => button.classList.remove("hidden"));
 }
+
+const playSound = (audioName) => {
+  let audio = new Audio(audioName)
+    audio.play();
+  }
