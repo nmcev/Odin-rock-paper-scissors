@@ -8,8 +8,10 @@ let playerResult_div = document.getElementById('player_resultD');
 let compResult_div = document.getElementById('comp_resultD');
 const gameOverScreen = document.getElementById('game-over-screen');
 const playAgainButton = document.getElementById('play-again-button');
-
-
+const rockBtn = document.querySelector('.btn-1')
+rockBtn.addEventListener('click', () => {
+  playSound("audio/theRock.mp3");
+})
 let result_div = document.getElementById('result');
 
 const btn = document.querySelectorAll('.btn');
@@ -25,6 +27,7 @@ btn.forEach(button => button.addEventListener('click', () => {
   displayResults(player, computer, result);
   updateScoreboard();
   calcWinner();
+  tieSound();
 }));
 
 function computerChoice() {
@@ -115,5 +118,13 @@ const resetGame = () => {
 
 const playSound = (audioName) => {
   let audio = new Audio(audioName)
-    audio.play();
+  audio.play();
+}
+
+const tieSound = () => {
+  if (playerScore > 0 && computerScore > 0) {
+    if (playerScore == computerScore) {
+      playSound("audio/susSound.mp3");
+    }
   }
+}
