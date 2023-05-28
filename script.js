@@ -14,6 +14,9 @@ rockBtn.addEventListener('click', () => {
 })
 let result_div = document.getElementById('result');
 
+// New variable to track if tie sound has been played
+let tieSoundPlayed = false;
+
 const btn = document.querySelectorAll('.btn');
 btn.forEach(button => button.addEventListener('click', () => {
 
@@ -114,6 +117,8 @@ const resetGame = () => {
   gameOverScreen.style.display = "none";
   btn.forEach(button => button.disabled = false);
   btn.forEach(button => button.classList.remove("hidden"));
+  // Reset tie sound flag
+  tieSoundPlayed = false;
 }
 
 const playSound = (audioName) => {
@@ -122,9 +127,8 @@ const playSound = (audioName) => {
 }
 
 const tieSound = () => {
-  if (playerScore > 0 && computerScore > 0) {
-    if (playerScore == computerScore) {
-      playSound("audio/susSound.mp3");
-    }
+  if (playerScore > 0 && computerScore > 0 && playerScore === computerScore && !tieSoundPlayed) {
+    playSound("audio/susSound.mp3");
+    tieSoundPlayed = true;
   }
 }
