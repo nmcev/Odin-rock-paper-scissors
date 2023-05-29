@@ -13,6 +13,11 @@ numRoundsInput.addEventListener('change', () => {
   numRounds = parseInt(numRoundsInput.value);
 });
 
+numRoundsInput.addEventListener('input', () => {
+  if (numRoundsInput.value > 10) {
+    numRoundsInput.value = 10;
+  }
+})
 let playerResult_div = document.getElementById('player_resultD');
 let compResult_div = document.getElementById('comp_resultD');
 const gameOverScreen = document.getElementById('game-over-screen');
@@ -113,7 +118,6 @@ const calcWinner = () => {
 }
 
 const disableButtons = () => {
-  btn.forEach(button => button.disabled = true);
   btn.forEach(button => button.classList.add("hidden"));
 }
 
