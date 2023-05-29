@@ -4,6 +4,15 @@ let computer;
 let playerScore = 0;
 let computerScore = 0;
 
+let textRounds = document.querySelector('.playing-times');
+let numRoundsInput = document.querySelector('#numRoundsInput');
+let numRounds = 5;
+
+
+numRoundsInput.addEventListener('change', () => {
+  numRounds = parseInt(numRoundsInput.value);
+});
+
 let playerResult_div = document.getElementById('player_resultD');
 let compResult_div = document.getElementById('comp_resultD');
 const gameOverScreen = document.getElementById('game-over-screen');
@@ -20,7 +29,7 @@ let tieSoundPlayed = false;
 const btn = document.querySelectorAll('.btn');
 btn.forEach(button => button.addEventListener('click', () => {
 
-  if (playerScore == 5 || computerScore == 5) {
+  if (playerScore === numRounds || computerScore === numRounds) {
     return;
   }
   player = button.dataset.pickValue;
@@ -31,6 +40,11 @@ btn.forEach(button => button.addEventListener('click', () => {
   updateScoreboard();
   calcWinner();
   tieSound();
+
+  numRoundsInput.classList.add('remove-input');
+  numRoundsInput.disabled = true;
+  textRounds.classList.add('remove-text')
+  textRounds.disabled = true;
 }));
 
 function computerChoice() {
@@ -84,16 +98,16 @@ const updateScoreboard = () => {
 }
 
 const calcWinner = () => {
-  if (playerScore == 5) {
+  if (playerScore == numRounds) {
     result_div.textContent = "Congratulations🎉! You have won the game";
     disableButtons();
     playSound("audio/winning.mp3");
     gameOverScreen.style.display = 'block';
 
-  } else if (computerScore == 5) {
+  } else if (computerScore == numRounds) {
     result_div.textContent = "Game over🚨! The computer has won";
     disableButtons();
-    playSound("audio/losing.mp3", 2, 2)
+    playSound("audio/losing.mp3")
     gameOverScreen.style.display = 'block';
   }
 }
@@ -119,6 +133,15 @@ const resetGame = () => {
   btn.forEach(button => button.classList.remove("hidden"));
   // Reset tie sound flag
   tieSoundPlayed = false;
+
+  numRoundsInput.value = '5';
+  numRoundsInput.classList.remove('remove-input');
+  numRoundsInput.disabled = false;
+  textRounds.classList.remove('remove-text');
+  textRounds.disabled = false;
+
+  numRounds = parseInt(numRoundsInput.value);
+
 }
 
 const playSound = (audioName) => {
@@ -127,7 +150,10 @@ const playSound = (audioName) => {
 }
 
 const tieSound = () => {
-  if (playerScore > 0 && computerScore > 0 && playerScore === computerScore && !tieSoundPlayed) {
+  if (playerScore > 0 && computerScore > 0 &&
+    playerScore === computerScore &&
+    !tieSoundPlayed
+  ) {
     playSound("audio/susSound.mp3");
     tieSoundPlayed = true;
   }
