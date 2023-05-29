@@ -255,3 +255,33 @@ button svg {
 {
   cursor: url(https://ani.cursors-4u.net/games/gam-16/gam1547.cur), auto !important;
 }
+
+.playing-times{
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center;
+}
+.playing-times > input { 
+  width: 5rem;
+  font-weight: bold !important;
+  font-size: 1.25rem;
+  background-color: #323330;
+  color: #f0db4f;
+  text-align: center !important;
+}
+
+.numbers-round{
+  font-family: 'Sigmar';
+  font-size: 1.25rem ;
+  color: white !important;
+  padding: 0;
+  margin: 0;
+}
+
+.remove-input {
+  display: none;
+}
+.remove-text{
+  display: none;
+}
